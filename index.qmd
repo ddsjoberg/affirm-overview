@@ -143,3 +143,17 @@ RAND |>
 <https://pcctc.github.io/affirm/articles/getting-started.html#report>
 
 ![](images/affirm-report.png)
+
+## {affirm}
+
+::: columns
+::: {.column width="60%"}
+[`r fontawesome::fa("link")`](https://pcctc.github.io/affirm) <https://pcctc.github.io/affirm>
+
+[`r fontawesome::fa("github")`](https://github.com/pcctc/affirm) <https://github.com/pcctc/affirm>
+:::
+
+::: {.column width="40%"}
+![](images/affirm-logo.png)
+:::
+:::
