@@ -138,6 +138,24 @@ RAND |>
 
 ## How {affirm} works
 
+- Other affirmation functions currently available
+
+  - `affirm_false()`
+  
+  - `affirm_class()`
+  
+  - `affirm_values()`
+  
+  - `affirm_na()`
+  
+  - `affirm_not_na()`
+  
+  - `affirm_no_dupes()`
+  
+  - `affirm_range()`
+
+## How {affirm} works
+
 -   What does the report look like?
 
 <https://pcctc.github.io/affirm/articles/getting-started.html#report>
