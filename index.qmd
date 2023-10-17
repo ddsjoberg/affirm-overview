@@ -1,24 +1,145 @@
 ---
 title: "{affirm} R Package Overview"
-format: revealjs
+author: "Daniel D. Sjoberg"
+footer: "[{affirm} R Package](https://pcctc.github.io/affirm/index.html)"
+logo: "images/affirm-logo.png"
 editor: source
+engine: knitr
+format: 
+  revealjs: 
+    theme: slides.scss
+    transition: none #fade
+    slide-number: true
+    chalkboard: true
+execute:
+  echo: true
+  freeze: false
+cache: false
 ---
 
-## Quarto
+## How to ensure the accuracy of derivations?
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+::: columns
+::: {.column width="60%"}
+::: larger
+-   Accuracy today when I derive a new variable?
 
-## Bullets
+-   Accuracy 1 year from now after much more data has been collected?
+:::
+:::
 
-When you click the **Render** button a document will be generated that includes:
+::: {.column width="40%"}
+![](https://media2.giphy.com/media/l2SpQRuCQzY1RXHqM/giphy.gif?cid=6c09b952y64x0515xtwpr9d2u2tm89v23jjp8encc4uihxhe&ep=v1_gifs_search&rid=giphy.gif&ct=g)
+:::
+:::
 
--   Content authored with markdown
--   Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+# What is {affirm}?
 
 ```{r}
-1 + 1
+#| echo: false
+#| cache: false
+library(affirm)
+library(tidyverse)
+# fill for font awesome icons
+fa_fill <- "#606060"
 ```
+
+![](images/affirm-logo.png)
+
+## {affirm}
+
+::: larger2
+-   {affirm} package makes daily affirmation against our data
+
+-   **affirm** raw data is as expected
+
+-   **affirm** derived variables continue to be accurate as data is updated
+:::
+
+## Why {affirm}?
+
+-   There are plenty of ways to make checks against your data
+
+    -   testthat
+    -   checkmate
+    -   assertthat
+
+-   *Why do we need another tool?*
+
+. . .
+
+::: center
+::: columns
+::: {.column width="40%"}
+::: larger2
+REPORTING!
+:::
+:::
+
+::: {.column width="60%"}
+![](https://media.giphy.com/media/3owyoUHuSSqDMEzVRu/giphy.gif)
+:::
+:::
+:::
+
+## How {affirm} works
+
+-   Initialize a new affirmation session
+
+```{r}
+options('affirm.id_cols' = "SUBJECT")
+
+affirm_init(replace = TRUE)
+#> ✔ We're ready to make data affirmations...
+```
+
+-   Using EDC data to derive new variables requires a different style of data validations.
+
+-   When validating raw EDC data, we must report bad/inconsistent data to a data manager who will then investigate and correct the data in the source data base.
+
+-   When validating derived variables based on raw EDC data, we make assumptions about the data. Validations can be used to ensure that whatever assumptions we made on the day we first derived a new variable are still met as the raw EDC data continues to be updated.
+
+## How {affirm} works
+
+-   Make an affirmation
+
+```{r}
+affirm_true(
+  RAND,
+  label = "RAND: Subject ID is not missing",
+  condition = !is.na(SUBJECT)
+) |> 
+  invisible()
+#> • RAND: Subject ID is not missing
+#>   0 issues identified.
+```
+
+-   Every newly derived variable should be associated with **multiple** affirmations to ensure the derivation remains correct into the future.
+
+## How {affirm} works
+
+-   Merge in data from the DM data set, and check whether the reported subject age aligns with the age group in the randomization stratification variable
+
+```{r}
+RAND |>
+  left_join(
+    DM |> prepend_df_name() |> select(SUBJECT, DM.AGE) , 
+    by = "SUBJECT"
+  ) |> 
+  affirm_true(
+    label = "RAND: Randomization strata match recorded subject age",
+    condition =
+      (RAND_STRATA %in% "<65yr" & DM.AGE < 65) | (RAND_STRATA %in% ">=65yr" & DM.AGE >= 65)
+  ) |> 
+  invisible()
+#> • RAND: Randomization strata match recorded subject age
+#>   1 issue identified.
+```
+
+## How {affirm} works
+
+-   What does the report look like?
+
+<https://pcctc.github.io/affirm/articles/getting-started.html#report>
+
+![](images/affirm-report.png)

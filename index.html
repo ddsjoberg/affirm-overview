@@ -10,6 +10,7 @@
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.353">
 
+  <meta name="author" content="Daniel D. Sjoberg">
   <title>{affirm} R Package Overview</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -28,11 +29,78 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="index_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
 
@@ -327,33 +395,138 @@
   <h1 class="title">{affirm} R Package Overview</h1>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Daniel D. Sjoberg 
+</div>
+</div>
 </div>
 
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<section id="how-to-ensure-the-accuracy-of-derivations" class="slide level2">
+<h2>How to ensure the accuracy of derivations?</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="larger">
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li><p>Accuracy today when I derive a new variable?</p></li>
+<li><p>Accuracy 1 year from now after much more data has been collected?</p></li>
+</ul>
+</div>
+</div><div class="column" style="width:40%;">
+<p><img data-src="https://media2.giphy.com/media/l2SpQRuCQzY1RXHqM/giphy.gif?cid=6c09b952y64x0515xtwpr9d2u2tm89v23jjp8encc4uihxhe&amp;ep=v1_gifs_search&amp;rid=giphy.gif&amp;ct=g"></p>
+</div>
+</div>
+</section>
+<section>
+<section id="what-is-affirm" class="title-slide slide level1 center">
+<h1>What is {affirm}?</h1>
+
+<img data-src="images/affirm-logo.png" class="r-stretch"></section>
+<section id="affirm" class="slide level2">
+<h2>{affirm}</h2>
+<div class="larger2">
+<ul>
+<li><p>{affirm} package makes daily affirmation against our data</p></li>
+<li><p><strong>affirm</strong> raw data is as expected</p></li>
+<li><p><strong>affirm</strong> derived variables continue to be accurate as data is updated</p></li>
+</ul>
+</div>
+</section>
+<section id="why-affirm" class="slide level2">
+<h2>Why {affirm}?</h2>
+<ul>
+<li><p>There are plenty of ways to make checks against your data</p>
+<ul>
+<li>testthat</li>
+<li>checkmate</li>
+<li>assertthat</li>
+</ul></li>
+<li><p><em>Why do we need another tool?</em></p></li>
+</ul>
+<div class="fragment">
+<div class="center">
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="larger2">
+<p>REPORTING!</p>
+</div>
+</div><div class="column" style="width:60%;">
+<p><img data-src="https://media.giphy.com/media/3owyoUHuSSqDMEzVRu/giphy.gif"></p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-affirm-works" class="slide level2">
+<h2>How {affirm} works</h2>
+<ul>
+<li>Initialize a new affirmation session</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">options</span>(<span class="st">'affirm.id_cols'</span> <span class="ot">=</span> <span class="st">"SUBJECT"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">affirm_init</span>(<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt; ✔ We're ready to make data affirmations...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Using EDC data to derive new variables requires a different style of data validations.</p></li>
+<li><p>When validating raw EDC data, we must report bad/inconsistent data to a data manager who will then investigate and correct the data in the source data base.</p></li>
+<li><p>When validating derived variables based on raw EDC data, we make assumptions about the data. Validations can be used to ensure that whatever assumptions we made on the day we first derived a new variable are still met as the raw EDC data continues to be updated.</p></li>
 </ul>
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<p>When you click the <strong>Render</strong> button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<section id="how-affirm-works-1" class="slide level2">
+<h2>How {affirm} works</h2>
+<ul>
+<li>Make an affirmation</li>
+</ul>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">affirm_true</span>(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  RAND,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="at">label =</span> <span class="st">"RAND: Subject ID is not missing"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="at">condition =</span> <span class="sc">!</span><span class="fu">is.na</span>(SUBJECT)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="fu">invisible</span>()</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; • RAND: Subject ID is not missing</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt;   0 issues identified.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div class="footer footer-default">
-
+<ul>
+<li>Every newly derived variable should be associated with <strong>multiple</strong> affirmations to ensure the derivation remains correct into the future.</li>
+</ul>
+</section>
+<section id="how-affirm-works-2" class="slide level2">
+<h2>How {affirm} works</h2>
+<ul>
+<li>Merge in data from the DM data set, and check whether the reported subject age aligns with the age group in the randomization stratification variable</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>RAND <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    DM <span class="sc">|&gt;</span> <span class="fu">prepend_df_name</span>() <span class="sc">|&gt;</span> <span class="fu">select</span>(SUBJECT, DM.AGE) , </span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="at">by =</span> <span class="st">"SUBJECT"</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">affirm_true</span>(</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="at">label =</span> <span class="st">"RAND: Randomization strata match recorded subject age"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="at">condition =</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a>      (RAND_STRATA <span class="sc">%in%</span> <span class="st">"&lt;65yr"</span> <span class="sc">&amp;</span> DM.AGE <span class="sc">&lt;</span> <span class="dv">65</span>) <span class="sc">|</span> (RAND_STRATA <span class="sc">%in%</span> <span class="st">"&gt;=65yr"</span> <span class="sc">&amp;</span> DM.AGE <span class="sc">&gt;=</span> <span class="dv">65</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb3-11"><a href="#cb3-11"></a>  <span class="fu">invisible</span>()</span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt; • RAND: Randomization strata match recorded subject age</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;   1 issue identified.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
+<section id="how-affirm-works-3" class="slide level2">
+<h2>How {affirm} works</h2>
+<ul>
+<li>What does the report look like?</li>
+</ul>
+<p><a href="https://pcctc.github.io/affirm/articles/getting-started.html#report" class="uri">https://pcctc.github.io/affirm/articles/getting-started.html#report</a></p>
+<p><img data-src="images/affirm-report.png"></p>
+<p><img src="images/affirm-logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p><a href="https://pcctc.github.io/affirm/index.html">{affirm} R Package</a></p>
+</div>
+</section></section>
     </div>
   </div>
 
@@ -364,6 +537,7 @@
   <script src="index_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="index_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="index_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -385,7 +559,8 @@
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -406,7 +581,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -556,7 +731,7 @@
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
